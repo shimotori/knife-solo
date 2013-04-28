@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email    = 'mat@schaffer.me'
   s.homepage = 'http://matschaffer.github.io/knife-solo/'
 
-  manifest        = File.readlines("Manifest.txt").map(&:chomp)
+  manifest        = `git ls-files`.split("\n")
   s.files         = manifest
   s.executables   = manifest.grep(%r{^bin/}).map{ |f| File.basename(f) }
   s.test_files    = manifest.grep(%r{^(test|spec|features)/})
